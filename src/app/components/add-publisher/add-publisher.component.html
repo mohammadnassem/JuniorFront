@@ -1,0 +1,38 @@
+<app-alert></app-alert>
+
+<div class="container my-4 display-6">
+  <div class="row">
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+    <div class="col-md-6 col-xs-10 col-sm-10" > <h1> إدراج دار نشر جديدة</h1></div>
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+    <div class="col-md-6 col-xs-10 col-sm-10">
+
+
+      <label class="form-label " >اسم دار النشر</label>
+      <input  name="name" ngDefaultControl type="text" class="form-control mb-3"  placeholder="اسم دار النشر" [(ngModel)]="publisher.name">
+
+      <label class="form-label ">عنوان دار النشر</label>
+      <input  name="address" ngDefaultControl type="text" class="form-control mb-3" placeholder="عنوان دار النشر"  [(ngModel)]="publisher.address">
+
+      <label class="form-label " >البريد الإلكتروني</label>
+      <input  name="email" ngDefaultControl type="email" class="form-control mb-3"  [(ngModel)]="publisher.email">
+
+
+
+
+
+
+      <button class="btn btn-warning form-control mt-4" (click)="addPublisher(publisher);">إدراج دار النشر </button>
+      <!-- <img [src]="urlLink"> -->
+    </div>
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+  </div>
+</div>
+<div style="height: 320px"></div>
+<app-footer></app-footer>

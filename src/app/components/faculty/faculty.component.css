@@ -1,0 +1,61 @@
+.cross {
+  font-size: 10px
+}
+.ribbon {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute
+}
+
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 34px;
+  border-radius: 50%;
+  padding: 8px 0;
+  background-color: #3498db;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+  color: #fff;
+  font: 100 18px/1 'Lato', sans-serif;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  text-transform: uppercase;
+  text-align: center
+}
+
+.ribbon-top-right {
+  top: -10px;
+  right: -10px
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+  border-top-color: transparent;
+  border-right-color: transparent
+}
+
+.ribbon-top-right::before {
+  top: 0;
+  left: 17px
+}
+
+.ribbon-top-right::after {
+  bottom: 17px;
+  right: 0
+}
+
+.ribbon-top-right span {
+  right: 17px;
+  top: 17px
+}
+.foot {
+  position: fixed;
+  overflow: hidden;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f07c00;
+  color: white;
+  text-align: center;
+}
+
+

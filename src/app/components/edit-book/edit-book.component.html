@@ -1,0 +1,85 @@
+
+
+
+
+
+<div class="container my-4 display-6">
+  <div class="row">
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+    <div class="col-md-6 col-xs-10 col-sm-10" > <h1> تعديل معلومات الكتاب</h1></div>
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+    <div class="col-md-6 col-xs-10 col-sm-10">
+
+
+      <label class="form-label " >اسم الكتاب</label>
+      <input  name="title" ngDefaultControl type="text" class="form-control mb-3"  placeholder="اسم الكتاب" [(ngModel)]="book.title">
+
+      <label class="form-label ">عدد نسخ الكتاب:</label>
+      <input  name="number_of_copies" ngDefaultControl type="number" class="form-control mb-3"  [(ngModel)]="book.number_of_copies">
+
+      <label class="form-label " >الإصدار</label>
+      <input  name="edition" ngDefaultControl type="text" class="form-control mb-3" placeholder="الإصدار" [(ngModel)]="book.edition">
+
+      <label class="form-label ">السعر:</label>
+      <input name="price" ngDefaultControl type="number" class="form-control mb-3" placeholder="Price" [(ngModel)]="book.price">
+
+
+      <label class="form-label" >الرقم الدولي المعياري للكتاب</label>
+      <input  name="isbn" ngDefaultControl type="text" class="form-control mb-3 " placeholder="الرقم الدولي المعياري للكتاب" [(ngModel)]="book.isbn">
+
+      <label class="form-label " > عدد صفحات للكتاب</label>
+      <input name="number_pages" ngDefaultControl type="number" class="form-control mb-3" placeholder="عدد صفحات للكتاب" [(ngModel)]="book.number_pages">
+
+      <label for="" class="mt-2 mb-3">اسم الكاتب </label>
+      <ng-multiselect-dropdown
+        [placeholder]="'اسم الكاتب '"
+        [settings]="dropdownSettings"
+        [data]="auhtors"
+        [(ngModel)]="selectedItems"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
+
+      <label class="form-label mt-3">صورة الكتاب</label>
+
+      <input class="form-control" type="file" (change)="onFileSelect($event)">
+
+
+
+      <label for="" class="mt-2 mb-3">دار النشر</label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="book.publisher_id">
+        <option *ngFor="let publ of publisher" value="{{publ.id}}">{{publ.name}}</option>
+      </select>
+
+
+      <label class="form-label mt-3" style="display: block">نوع الكتاب</label>
+      <select id="categoriesList" name="categoriesList" [ngModel]="categorySelected"
+              (ngModelChange)="setAnotherSelect(+$event)">
+        <option value="-1"></option>
+        <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+      </select>
+
+      <select id="randomElementsList" name="randomElementsList" [ngModel]="categorySelected" *ngIf="showRandomElements"  (ngModelChange)="setAnotherSelect(+$event)">
+        <option value="-1"></option>
+        <option *ngFor="let element of randomElements" value="{{ element.id }}">{{ element.name }}</option>
+      </select>
+
+
+
+      <button class="btn btn-primary form-control mt-4" (click)="editbook(book);">Add </button>
+      <!-- <img [src]="urlLink"> -->
+    </div>
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+  </div>
+</div>
+
+
+
+
+

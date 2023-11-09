@@ -1,0 +1,119 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<div class="container">
+  <div class="container">
+    <div class="row flex-lg-nowrap">
+      <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+      </div>
+
+      <div class="col">
+        <div class="row">
+          <div class="col mb-3">
+            <div class="card">
+
+
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 col-sm-auto mb-3">
+                    <div class="mx-auto" style="width: 140px;">
+                      <div class="d-flex justify-content-center align-items-center rounded"
+                           style="height: 140px; background-color: rgb(233, 236, 239);">
+                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><img height="140px"
+                                                                                            src="{{'/api/image/'+profile.profile_pic}}"
+                                                                                            class="img-thumbnail"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                      <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{profile.first_name}}</h4>
+
+                    </div>
+                    <div class="text-center text-sm-right">
+                      <span class="badge badge-secondary">administrator</span>
+                      <div class="text-muted">
+                        <small>{{datePipe.transform(profile.created_at, "dd/MM/yy - hh:mm:ss a")}}</small></div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <ul class="nav nav-tabs">
+                  <li class="nav-item"><a class="active nav-link">Profile</a></li>
+                </ul>
+                <div class="tab-content pt-3">
+                  <div class="tab-pane active">
+                    <form class="form" novalidate="" style="height: 600px">
+                      <div class="row">
+                        <div class="col">
+                          <div class="row mb-5">
+                            <div class="col">
+                              <div class=" text-sm-left mb-2 mb-sm-0">
+                                <h2 class="pt-sm-2 pb-1 mb-0 ">الاسم الكامل</h2>
+                                <div class="text-muted mb-5"><small> {{profile.first_name}} {{profile.last_name}}</small>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                              <div class="col">
+                                <div class=" text-sm-left mb-2 mb-sm-0">
+                                  <h2 class="pt-sm-2 pb-1 mb-0 "> الاسم الاول</h2>
+                                  <div class="text-muted"><small> {{profile.first_name}}</small></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row mb-5">
+                            <div class="col">
+                              <div class=" text-sm-left mb-2 mb-sm-0">
+                                <h2 class="pt-sm-2 pb-1 mb-0 ">اسم العائله</h2>
+                                <div class="text-muted"><small> {{profile.last_name}}</small></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row mb-5">
+                          <div class="col">
+                            <div class=" text-sm-left mb-2 mb-sm-0">
+                              <h2 class="pt-sm-2 pb-1 mb-0 ">الرقم الجامعي</h2>
+                              <div class="text-muted"><small> {{profile?.id_university}}</small></div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="row mb-5">
+                          <div class="col">
+                            <div class=" text-sm-left mb-2 mb-sm-0">
+                              <h2 class="pt-sm-2 pb-1 mb-0 ">لبريد الإلكتروني</h2>
+                              <div class="text-muted"><small> {{profile.email}}</small></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-3 mb-3">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

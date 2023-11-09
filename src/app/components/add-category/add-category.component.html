@@ -1,0 +1,36 @@
+<div class="container my-4 display-6">
+  <div class="row">
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+    <div class="col-md-6 col-xs-10 col-sm-10" > <h1> إدراج تصنيف جديد </h1></div>
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+    <div class="col-md-6 col-xs-10 col-sm-10">
+
+
+
+
+      <label for="" class="mt-2 mb-3">الصنف الرئيسي </label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="subcategories.parent_id">
+        <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+      </select>
+
+      <label class="form-label mt-4 ">اسم الصنف الفرعي</label>
+      <input  name="address" ngDefaultControl type="text" class="form-control mb-3" placeholder="اسم الصنف الفرعي"  [(ngModel)]="subcategories.name">
+
+
+
+
+        <button class="btn btn-warning form-control mt-4" (click)="addPublisher(subcategories);">إدراج التصنيف </button>
+      <!-- <img [src]="urlLink"> -->
+    </div>
+    <div class="col-md-3 col-xs-1 col-sm-1"></div>
+  </div>
+</div>
+
+<div style="height: 400px"></div>
+<app-footer></app-footer>

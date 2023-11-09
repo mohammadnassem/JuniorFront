@@ -1,0 +1,101 @@
+
+
+<div class="container">
+  <br> <h1 class="text-center" >تفاصيل الكتاب </h1>
+  <hr>
+
+<app-alert></app-alert>
+  <div class="card">
+    <div class="row">
+      <aside class="col-lg-6 border-right">
+        <article class="gallery-wrap">
+          <div class="img-big-wrap">
+            <div style="width: 600px; overflow: hidden"> <a ><img src="{{'/api/image/'+book?.photo}}"></a></div>
+          </div> <!-- slider-product.// -->
+
+        </article> <!-- gallery-wrap .end// -->
+      </aside>
+
+      <aside class="col-lg-6 ">
+        <article class="card-body p-5">
+          <h3 class="title mb-3">{{book?.title}}</h3>
+
+          <p class="price-detail-wrap">
+	<span class="price h3 text-warning">
+		<span class="currency">{{book?.price}}</span><span class="num"> ل.س</span>
+	</span>
+            <span>/لكل كتاب</span>
+          </p> <!-- price-detail-wrap .// -->
+          <dl class="item-property">
+            <dt>عدد النسخ</dt>
+            <dd><p>{{book?.number_of_copies}} </p></dd>
+          </dl>
+          <dl class="param param-feature">
+            <dt>الإصدار</dt>
+            <dd>{{book?.edition}} </dd>
+          </dl>
+          <dl class="param param-feature">
+            <dt>الرقم الدولي المعياري للكتاب:</dt>
+            <dd>{{book?.isbn}} </dd>
+          </dl>
+          <dl class="param param-feature">
+            <dt>الصنف:</dt>
+            <dd>{{category?.name}} </dd>
+          </dl>
+          <dl class="param param-feature">
+            <dt>عدد صفحات للكتاب:</dt>
+            <dd>{{book?.number_pages}} </dd>
+          </dl>
+          <dl class="param param-feature">
+            <dt>دار النشر:</dt>
+            <dd>{{publisher?.name}}</dd>
+          </dl>  <!-- item-property-hor .// -->
+          <dl class="param param-feature">
+            <dt>المؤلف:</dt>
+            <span class="details-button" *ngFor="let author of authors; let i = index;" >{{author?.name}} , </span>
+          </dl>  <!-- item-property-hor .// -->
+          <hr>
+          <div class="row">
+            <div class="col-sm-5">
+              <dl class="param param-inline">
+                <dt>عدد الكتب الكلي  </dt>
+                <dd >{{book?.number_of_copies}} </dd>
+              </dl>
+              <!-- item-property .// -->
+            </div> <!-- col.// -->
+            <div class="col-sm-7">
+              <dl class="param param-inline">
+                <dt>عدد الكتب المحجوزه </dt>
+                <dd>{{book?.number_reservation}} </dd>
+
+              </dl>  <!-- item-property .// -->
+            </div> <!-- col.// -->
+          </div> <!-- row.// -->
+          <hr>
+
+          <a   (click)="reservBook(book)"  class="btn btn-lg btn-outline-primary text-uppercase" *ngIf="flag" > <i class="fas fa-shopping-cart" ></i> حجز الكتاب </a>
+        </article> <!-- card-body.// -->
+      </aside> <!-- col.// -->
+
+
+    </div> <!-- row.// -->
+  </div> <!-- card.// -->
+
+
+</div>
+<!--container.//-->
+
+
+
+
+
+
+<div *ngIf="book == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

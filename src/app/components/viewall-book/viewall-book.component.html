@@ -1,0 +1,53 @@
+<app-alert></app-alert>
+<div class="form-group row">
+
+  <div class="col-sm-6">
+<!--    <input type="text" [(ngModel)]="serchValue" class="form-control" id="search"/>-->
+  </div>
+</div>
+<div class="container my-4 display-6">
+  الكتب المتوفره
+</div>
+
+<div *ngIf="books != null">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope='col'>رقم الكتاب</th>
+        <th scope='col'>اسم الكتاب</th>
+        <th scope='col'>عدد النسخ</th>
+        <th scope='col'>عدد الصفحات</th>
+        <th scope='col'>تعديل المعلومات</th>
+        <th scope='col'> حذف الكتاب</th>
+        <th scope='col'>اضافه للفرع</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of books | searchBook:sharedService.serchValue| paginate: { itemsPerPage: 12, currentPage: page,totalItems:totalLength}">
+        <td class="count">{{book?.id}}</td>
+        <td><span class="details-button" [routerLink]="'/details/' +book.id">{{book?.title}}</span></td>
+        <td >{{book?.number_of_copies}}</td>
+        <td >{{book?.number_pages}}</td>
+        <td ><button type="button" class="btn btn-outline-warning" [routerLink]="'/edit-book/'+book?.id">تعديل</button></td >
+        <td ><button type="button" class="btn btn-outline-danger" (click)="delete(book?.id)">حذف</button> </td>
+        <td ><button type="button" class="btn btn-outline-warning" [routerLink]="'/book/add/branche/'+book?.id">تعديل</button></td >
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+</div>
+
+
+<div *ngIf="books == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+

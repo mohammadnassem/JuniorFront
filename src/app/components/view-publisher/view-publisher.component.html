@@ -1,0 +1,60 @@
+
+
+<div *ngIf="publisher != null" class="container">
+  <br> <h1 class="text-center">تفاصيل دار النشر </h1>
+  <hr>
+
+
+  <div class="card">
+    <div class="row">
+      <aside class="col-lg-6 border-right">
+        <article class="gallery-wrap">
+          <div class="img-big-wrap">
+            <div style="width: 600px; overflow: hidden"> <a ><img src="/api/image/publisher.jfif"></a></div>
+          </div> <!-- slider-product.// -->
+
+        </article> <!-- gallery-wrap .end// -->
+      </aside>
+
+      <aside class="col-lg-6 ">
+        <article class="card-body p-5">
+          <h2 class="title mb-5">{{publisher.name}}</h2>
+
+          <dl class="item-property">
+            <dt>عنوان دار النشر : </dt>
+            <dd><p>{{publisher.address}} </p></dd>
+          </dl>
+
+          <hr>
+          <dl class="param param-feature">
+            <dt> البريد الإلكتروني : </dt>
+            <dd>{{publisher.email}} </dd>
+          </dl>
+
+          <hr>
+
+          <a   class="btn btn-lg btn-outline-warning text-uppercase" [routerLink]="'/view/book/'+publisher.id"> <i class="fas fa-book"></i> عرض الكتب </a>
+        </article> <!-- card-body.// -->
+      </aside> <!-- col.// -->
+
+
+    </div> <!-- row.// -->
+  </div> <!-- card.// -->
+
+
+</div>
+<!--container.//-->
+
+
+
+
+
+
+<div *ngIf="publisher == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>

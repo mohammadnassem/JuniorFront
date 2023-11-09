@@ -1,0 +1,58 @@
+
+
+
+<app-alert></app-alert>
+
+<div class="container d-flex justify-content-center align-items-center">
+
+  <div class="card">
+    <div class="row">
+      <div class="col-md-6">
+
+        <h2>إنشاء حساب جديد</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="first_name">الاسم الأول</label>
+            <input type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
+            <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+              <div *ngIf="f.first_name.errors.required">الاسم الأول مطلوب</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">اسم العائله</label>
+            <input type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
+            <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+              <div *ngIf="f.last_name.errors.required">اسم العائله مطلوب</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">لبريد الإلكتروني مطلوب</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">كلمه السر</label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">كلمه السر مطلوبه</div>
+              <div *ngIf="f.password.errors.minlength">كلمه السر يجب ان لا تقل عن 6</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary mt-3">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              تسجيل
+            </button>
+          </div>
+        </form>
+
+
+      </div>
+      <div class="col-md-6">
+        <div class="text-center mt-5"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Open_Library_tight_logo.svg/1280px-Open_Library_tight_logo.svg.png" width="400" height="400"> </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<app-alert></app-alert>
+
+<div class="container my-4 display-6">
+ دور النشر
+</div>
+
+<div *ngIf="publishers != null">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope='col'>رقم دار النشر</th>
+        <th scope='col'>اسم دار النشر</th>
+        <th scope='col'>البريد الالكتروني</th>
+        <th scope='col'>عنوان دار النشر</th>
+        <th scope='col'>تعديل المعلومات</th>
+        <th scope='col'> حذف دار النشر</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let publisher of publishers| serchPublisher:sharedService.serchValue">
+        <td class="count">{{publisher.id}}</td>
+        <td><span class="details-button" [routerLink]="'/view/publisher/' +publisher.id">{{publisher?.name}}</span></td>
+        <td >{{publisher.email}}</td>
+        <td >{{publisher.address}}</td>
+        <td ><button type="button" class="btn btn-outline-warning" [routerLink]="'/edit/publisher/'+publisher.id">تعديل</button></td >
+        <td ><button type="button" class="btn btn-outline-danger" (click)="delete(publisher.id)">حذف</button> </td>
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div *ngIf="publishers == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+

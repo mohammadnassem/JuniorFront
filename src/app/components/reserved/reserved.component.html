@@ -1,0 +1,46 @@
+<app-alert></app-alert>
+
+<div class="container my-4 display-6">
+ طلبات الحجز
+</div>
+
+<div *ngIf="reservation != null">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope='col'>رقم الطلب</th>
+        <th scope='col'>اسم الطالب</th>
+        <th scope='col'>الرقم الجامعي للطالب</th>
+        <th scope='col'>اسم الكتاب</th>
+        <th scope='col'>تاريخ الطلب</th>
+        <th scope='col'>قبول الطلب</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let reserv of reservation| serchReserved:sharedService.serchValue; let i = index;">
+        <td class="count">{{reserv.id}}</td>
+        <td >{{reserv.user.first_name}}</td>
+        <td >{{reserv.user.id_university}}</td>
+        <td><span class="details-button" [routerLink]="'/details/' +reserv.book.id">{{reserv.book.title}}</span></td>
+        <td >{{datePipe.transform(reserv.due_date,"dd/MM/yy - hh:mm:ss a")}}</td>
+        <td ><button type="button" class="btn btn-outline-secondary" style="width: content-box;display: block;
+            margin: auto;" (click)="confirm(reserv)">قبول الطلب</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div *ngIf="reservation == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>

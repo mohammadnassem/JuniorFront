@@ -1,0 +1,52 @@
+<app-alert></app-alert>
+<div class="container my-4 display-6">
+  قائمة المؤلفون
+</div>
+
+<div *ngIf="authors != null">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope='col'>رقم الكاتب</th>
+        <th scope='col'>اسم الكاتب</th>
+
+
+        <th scope='col'>عنوان الكاتب</th>
+        <th scope='col'>تاريخ ميلاد الكاتب</th>
+        <th scope='col'> تعديل معلومات الكاتب</th>
+        <th scope='col'> حذف الكاتب</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let author of authors| serchAuthor:sharedService.serchValue">
+        <td class="count">{{author.id}}</td>
+        <td><span class="details-button" [routerLink]="'/view/author/' +author.id">{{author?.name}}</span></td>
+
+        <td >{{author?.address}}</td>
+        <td >{{datePipe.transform(author?.birthday,"dd/MM/yy - hh:mm:ss a")}}</td>
+        <td ><button type="button" class="btn btn-outline-secondary" style="width: content-box;display: block;
+            margin: auto;" [routerLink]="'/edit/authors/' + author.id" >تعديل</button></td>
+
+        <button type="button" class="btn btn-outline-secondary" style="width: content-box;display: block;
+            margin: auto;" (click)="delete(author.id);">  حذف</button>
+      </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div *ngIf="authors == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,68 @@
+<script crossorigin="anonymous" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" rel="stylesheet">
+<div class="container ">
+  <div class="container mt-3">
+    <div class="row flex-lg-nowrap ">
+      <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+
+      </div>
+      <div class="col">
+        <div class="row ">
+          <div class="col mb-3">
+            <div class="card" style="height: 700px;">
+              <div class="card-body">
+                <div class="e-profile">
+
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="active nav-link"><h1>ضبط اعدادات البرنامج</h1></a></li>
+
+                  </ul>
+                  <div class="tab-content pt-3">
+                    <div class="tab-pane active">
+
+                      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                          <label for="no_shelf" class="mb-3">عدد الرفوف في كل فرع</label>
+                          <input type="number" formControlName="no_shelf" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.no_shelf.errors }" />
+                          <div *ngIf="submitted && f.no_shelf.errors" class="invalid-feedback">
+                            <div *ngIf="f.no_shelf.errors.required">عدد الرفوف مطلوب</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="size_shelf" class="mb-2 mt-3" >عدد الصفحات لكل رف</label>
+                          <input type="number" formControlName="size_shelf" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.size_shelf.errors }" />
+                          <div *ngIf="submitted && f.size_shelf.errors" class="invalid-feedback">
+                            <div *ngIf="f.size_shelf.errors.required">عدد الصفحات في كل رف مطلوب *</div>
+                          </div>
+                        </div>
+                        <div class="form-group " style="margin-top: 340px; margin-right: 300px">
+                          <button [disabled]="loading" class="btn btn-primary">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            موافق
+                          </button>
+                        </div>
+                      </form>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3 mb-3" >
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

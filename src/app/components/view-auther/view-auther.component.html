@@ -1,0 +1,63 @@
+
+
+<div *ngIf="auhtor != null" class="container">
+  <br> <h1 class="text-center">  تفاصيل المؤلف </h1>
+  <hr>
+
+
+  <div class="card">
+    <div class="row">
+      <aside class="col-lg-6 border-right">
+        <article class="gallery-wrap">
+          <div class="img-big-wrap">
+            <div> <a href="#"><img src="https://hwimages.beslist.net/beslist-images/2NqyCBGgAhdDBxBdt12TCmkQmGyY/394/F300/fe775bbf1e7b66cf79c26100facc8653/Laptops/Laptop-HP-17-by2024nf-zwart-Core-i3-10110U-4-GB-DDR4-1-TB-5400-RPM-Intel-UHD-Graphics-UMA-17.3-HD%2B.jpg"></a></div>
+          </div> <!-- slider-product.// -->
+
+        </article> <!-- gallery-wrap .end// -->
+      </aside>
+
+      <aside class="col-lg-6 ">
+        <article class="card-body p-5">
+          <h2 class="title mb-5">{{auhtor.name}}</h2>
+
+          <dl class="item-property">
+            <dt>عنوان الكاتب : </dt>
+            <dd><p>{{auhtor.address}} </p></dd>
+          </dl>
+          <dl class="item-property">
+            <dt> وصف عن الكاتب :</dt>
+            <dd><p>{{auhtor.description}} </p></dd>
+          </dl>
+
+          <hr>
+          <dl class="param param-feature">
+            <dt>ميلاد الكاتب :</dt>
+            <dd>{{datePipe.transform(auhtor.birthday,"dd/MM/yy - hh:mm:ss a")}} </dd>
+          </dl>
+          <hr>
+
+          <a   class="btn btn-lg btn-outline-warning text-uppercase" [routerLink]="'/view/book/author/'+auhtor.id"> <i class="fas fa-book"></i> عرض الكتب </a>
+        </article> <!-- card-body.// -->
+      </aside> <!-- col.// -->
+
+
+    </div> <!-- row.// -->
+  </div> <!-- card.// -->
+
+
+</div>
+<!--container.//-->
+
+
+
+
+
+
+<div *ngIf="auhtor == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>

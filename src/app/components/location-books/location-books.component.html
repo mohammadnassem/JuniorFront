@@ -1,0 +1,46 @@
+<div class="container my-4 display-6">
+  توزع كل الكتب
+</div>
+
+<div *ngIf="allBookLocation != null">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope='col'>رقم الكتاب</th>
+        <th scope='col'>اسم الفرع</th>
+        <th scope='col'>عنوان الكتاب</th>
+        <th scope='col'>رقم الرف</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let Book of books| searchfilter:sharedService.serchValue | paginate: { itemsPerPage: 19, currentPage: page,totalItems:totalLength} ;">
+          <td class="count">{{Book.pivot.book_id}}</td>
+
+          <td>{{Book.branch_name}}</td>
+          <td >{{Book.title}}</td>
+          <td >{{Book.pivot.shelf}}</td>
+        </tr>
+
+
+      </tbody>
+    </table>
+    <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+  </div>
+
+</div>
+
+
+<div *ngIf="allBookLocation == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+

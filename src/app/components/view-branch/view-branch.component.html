@@ -1,0 +1,41 @@
+<div class="container my-4 display-6">
+  فروع المكتبه
+</div>
+
+<div *ngIf="branches != null">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope='col'>رقم الفرع</th>
+        <th scope='col'>اسم الفرع</th>
+        <th scope='col'>تاريخ انشاء الفرع</th>
+        <th scope='col'>عرض الكتب</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let branche of branches | serchBranch:sharedService.serchValue| paginate: { itemsPerPage: 12, currentPage: page,totalItems:totalLength}; let i = index;">
+        <td class="count">{{branche.id}}</td>
+        <td >{{branche.name}}</td>
+        <td >{{datePipe.transform(branche.created_at,"dd/MM/yy - hh:mm:ss a")}}</td>
+        <td><span class="details-button" [routerLink]="'/BranchDetail/' +branche.id">عرض الكتب</span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+</div>
+
+
+<div *ngIf="branches == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+

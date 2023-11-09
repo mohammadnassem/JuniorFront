@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngIf="books != null" class="row">
+      <div  class="col col-lg-4 shadow p-3 mt-5 bg-body m-4 rounded" *ngFor="let book of books| searchBook:sharedService.serchValue; let i = index;">
+        <div class="container" >
+          <section class="mx-auto my-5" style="max-width: 23rem;">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" style="background-image: url({{sharedService.url+'/storage/image/'+book.photo}}); background-size: cover; height:350px;">  </svg>
+
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body ">
+                <h5 class="card-title font-weight-bold"><a>{{book.title}}$</a></h5>
+                <p class="mb-2">$ {{book.price}}</p>
+                <hr class="my-4"/>
+
+                <div class=" d-flex justify-content-around">
+                  <button type="button" class="btn btn-warning " [routerLink]="'/details/'+book.id">تفاصيل الكتاب</button>
+                  <button type="button" class="btn btn-danger " (click)="deletreserv(book)" *ngIf="book.statues">حذف الحجز </button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <i *ngIf="book.isfavorite" (click)="toggleicon(book,i)" class="fa fa-thumbs-up" id="{{i}}" ></i>
+                    <i *ngIf="book.isfavorite==false" (click)="toggleicon(book,i)" class="fa fa-thumbs-down" id="{{i}}" ></i>
+
+
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="books == null " style="height:90vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+

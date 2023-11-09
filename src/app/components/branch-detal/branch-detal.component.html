@@ -1,0 +1,44 @@
+
+
+
+<div class="container my-4 display-6">
+  توزع الكتب على الرفوف
+</div>
+
+<div *ngIf="branchBook || branches != null">
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope='col'>رقم الكتاب</th>
+        <th scope='col'>اسم الكتاب</th>
+        <th scope='col'>اسم الفرع </th>
+        <th scope='col'>رقم الرف</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let branchBook of branchBook | searchfilter:sharedService.serchValue">
+        <td class="count">{{branchBook.id}}</td>
+        <td >{{branchBook.title}}</td>
+        <td >{{branches.name}}</td>
+        <td >{{branchBook.pivot.shelf}}</td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div *ngIf="branchBook  == null" style="height:70vh; display: flex;align-items: center;
+justify-content: center;">
+  <div>
+    <div class="spinner-border text-secondary" style="width: 15vh; height: 15vh;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+
